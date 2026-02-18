@@ -28,4 +28,4 @@ app.get('/api/health', (req, res) => {
 
 const PORT = 3000;
 app.listen(PORT, () =>
-    console.log('Server running on port 3000'));
+    console.log('Server running on port 3000, testing deployment'));
