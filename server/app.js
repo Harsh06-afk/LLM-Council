@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
+const path = require('path');
 const councilRoutes = require('./routes/council.routes');
 
 const app = express();
@@ -25,5 +26,11 @@ app.get('/api/health', (req, res) => {
 });
 
 app.use('/api/council', councilRoutes);
+
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+});
 
 module.exports = app;
